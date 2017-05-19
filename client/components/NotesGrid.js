@@ -9,19 +9,20 @@ import './NotesGrid.scss';
 
 class NotesGrid extends React.Component {
     render() {
+        const { notes, onNoteDelete, onNoteEdit } = this.props;
         const masonryOptions = {
-            columnWidth: '.grid-sizer',
+            columnWidth: 250,
             itemSelector: '.note',
             gutter: 10,
+            isFitWidth: true
         };
         return (
             <Masonry className='notes-grid' options={masonryOptions}>
-                <div className="grid-sizer"></div>
-                {this.props.notes.map(note =>
+                {notes.map(note =>
                     <Note
                         key={note._id}
                         note={note}
-                        onDelete={this.props.onNoteDelete}/>)
+                        onDelete={onNoteDelete.bind(null, note)} />)
                 }
             </Masonry>
         );
@@ -30,12 +31,12 @@ class NotesGrid extends React.Component {
 
 NotesGrid.propTypes = {
     notes: PropTypes.array,
-    onNoteDelete: PropTypes.func
+    onNoteDelete: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
     return {
-        notes: state.notes.notes
+        notes: state.notes
     };
 };
 

@@ -30,3 +30,13 @@ export function createNote(data) {
 export function deleteNote(id) {
     return Note.findById(id).remove();
 }
+
+export function updateNote(data) {
+    return Note.findById(data._id, (err, note) => {
+        note.title = data.title;
+        note.text = data.text;
+        return note.save(err => {
+            !err ? console.log("updated") : console.log(err);
+        });
+    });
+}

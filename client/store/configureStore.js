@@ -3,10 +3,9 @@ import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import DevTools from '../components/DevTools';
 
-export default function configureStore(initialState) {
+export default function configureStore() {
     return createStore(
         rootReducer,
-        initialState,
         compose(
             applyMiddleware(thunk),
             DevTools.instrument()

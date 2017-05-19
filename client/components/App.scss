@@ -22,11 +22,11 @@ body {
 .content {
   width: 100%;
   max-width: 1200px;
+}
 
-  &__header {
-    text-align: center;
-    font-weight: 500;
-    color: #cccccc;
-    text-shadow: 0 2px 3px rgba(255, 255, 255, .5);
-  }
+.content__header {
+  text-align: center;
+  font-weight: 500;
+  color: #cccccc;
+  text-shadow: 0 2px 3px rgba(255, 255, 255, .5);
 }

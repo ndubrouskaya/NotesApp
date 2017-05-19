@@ -1,0 +1,61 @@
+.custom {
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.modal-title {
+  input {
+    @extend .custom;
+  }
+}
+
+.modal-body {
+  textarea {
+    @extend .custom;
+    resize: none;
+  }
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    border: 0 none;
+    padding: 5px 0;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 100px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 100ms ease-in-out;
+    background: #c0cbbc;
+    color: white;
+
+    &:hover {
+      opacity: .9;
+      transition: all 100ms ease;
+    }
+
+    &:active {
+      opacity: .75;
+      transform: scale(.97);
+      transition: all 100ms ease;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &.save-btn {
+      background: #3ac569;
+    }
+  }
+}

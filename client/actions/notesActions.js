@@ -37,3 +37,25 @@ export function createNote(note) {
             .then(() => dispatch(loadNotes()));
     };
 }
+
+export function deleteNote(noteId) {
+    return (dispatch) => {
+        api.deleteNote(noteId)
+            .then((response) => {
+                return !response.ok
+                    ? console.log('Fail delete')
+                    : response.json()})
+            .then(() => dispatch(loadNotes()));
+    };
+}
+
+export function updateNote(data) {
+    return (dispatch) => {
+        api.updateNote(data)
+            .then((response) => {
+                return !response.ok
+                    ? console.log('Fail update')
+                    : response.json()})
+            .then(() => dispatch(loadNotes()));
+    };
+}

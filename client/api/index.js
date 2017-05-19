@@ -29,5 +29,18 @@ export default {
             {
                 method: 'DELETE'
             });
+    },
+
+    updateNote(data) {
+        return fetch(`${apiPrefix}/notes/${data._id}`,
+            {
+                method: 'PUT',
+                'headers': {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                'body': JSON.stringify(data)
+
+            });
     }
 }

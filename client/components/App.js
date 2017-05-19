@@ -24,8 +24,8 @@ class App extends React.Component {
         this.props.createNote(data);
     }
 
-    handleNoteDelete() {
-        this.props.deleteNote(data);
+    handleNoteDelete(note) {
+        this.props.deleteNote(note._id);
     }
 
     render() {
@@ -35,7 +35,6 @@ class App extends React.Component {
                 <NotesEditor onNoteAdd={this.handleNoteAdd} />
                 <NotesGrid
                     onNoteDelete={this.handleNoteDelete} />
-                { /* <Spinner /> */ }
             </div>
         );
     }
@@ -43,7 +42,8 @@ class App extends React.Component {
 
 App.propTypes = {
     loadNotes: PropTypes.func,
-    createNote: PropTypes.func
+    createNote: PropTypes.func,
+    deleteNote: PropTypes.func,
 };
 
 const mapActionsToProps = (dispatch) => {
@@ -53,6 +53,9 @@ const mapActionsToProps = (dispatch) => {
         },
         createNote: (data) => {
             dispatch(actions.createNote(data))
+        },
+        deleteNote: (id) => {
+            dispatch(actions.deleteNote(id))
         }
     }
 };
