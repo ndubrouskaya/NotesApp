@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ModalDialog from './ModalDialog';
-import { updateNote } from '../actions/notesActions';
+import * as actions from '../actions/notesActions';
 
 import './Note.scss';
 
@@ -20,7 +20,7 @@ class Note extends React.Component {
     showModal(state) {
         this.setState({
             showModal: state
-        });
+        }, this.props.setActiveNote(this.props.note._id));
     }
 
     handleSave(data) {
@@ -43,12 +43,14 @@ class Note extends React.Component {
                 }
                 <div className='note__text'>{note.text}</div>
 
-                <ModalDialog
-                    show={this.state.showModal}
-                    note={note}
-                    onSave={this.handleSave}
-                    onClose={() => this.showModal(false)}
-                />
+                {
+                    this.state.showModal &&
+                    <ModalDialog
+                        show={this.state.showModal}
+                        onSave={this.handleSave}
+                        onClose={() => this.showModal(false)}
+                    />
+                }
             </div>
         );
     }
@@ -57,13 +59,17 @@ class Note extends React.Component {
 Note.propTypes = {
     note: PropTypes.object,
     onDelete: PropTypes.func,
-    updateNote: PropTypes.func
+    updateNote: PropTypes.func,
+    setActiveNote: PropTypes.func
 };
 
 const mapActionsToProps = (dispatch) => {
     return {
         updateNote: (data) => {
-            dispatch(updateNote(data))
+            dispatch(actions.updateNote(data))
+        },
+        setActiveNote: (id) => {
+            dispatch(actions.setActiveNote(id))
         }
     };
 };

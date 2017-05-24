@@ -13,6 +13,14 @@ function loadNotesSuccess(data) {
     };
 }
 
+export function setActiveNote(id) {
+    return {
+        type: types.SET_ACTIVE_NOTE,
+        payload: id
+    };
+}
+
+
 export function loadNotes() {
     return (dispatch) => {
         dispatch(loadNotesRequest());

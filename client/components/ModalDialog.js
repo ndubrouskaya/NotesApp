@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Modal } from 'react-bootstrap';
+import { getNoteById } from '../selectors/noteSelector';
 
 import './ModalDialog.scss';
 
@@ -71,4 +73,11 @@ ModalDialog.propTypes = {
     onClose: PropTypes.func
 };
 
-export default ModalDialog;
+const mapStateToProps = (state) => {
+    const note = getNoteById(state.notes.notes, state.notes.activeNoteId);
+    return {
+        note: note
+    }
+};
+
+export default connect(mapStateToProps)(ModalDialog);
