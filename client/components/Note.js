@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Glyphicon } from 'react-bootstrap';
 
 import ModalDialog from './ModalDialog';
 import * as actions from '../actions/notesActions';
@@ -34,8 +35,12 @@ class Note extends React.Component {
         const style = { backgroundColor: note.color };
         return (
             <div className='note' style={style}>
-                <span className='note__icon-edit' onClick={() => this.showModal(true)} />
-                <span className='note__icon-del' onClick={onDelete.bind(this)} />
+                <span className='note__icon-edit' onClick={() => this.showModal(true)} >
+                    <Glyphicon glyph="pencil" />
+                </span>
+                <span className='note__icon-del' onClick={onDelete.bind(this)} >
+                    <Glyphicon glyph="remove" />
+                </span>
                 {
                     note.title
                         ? <h4 className='note__title'>{note.title}</h4>
