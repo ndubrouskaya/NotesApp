@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 
-import Note from './Note';
+import Note from './../note/Note';
 
 import './NotesGrid.scss';
 

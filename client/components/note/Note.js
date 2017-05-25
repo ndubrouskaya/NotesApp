@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Glyphicon } from 'react-bootstrap';
 
-import ModalDialog from './ModalDialog';
-import * as actions from '../actions/notesActions';
+import ModalDialog from './../modalDialog/ModalDialog';
+import * as actions from '../../actions/notesActions';
 
 import './Note.scss';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Modal } from 'react-bootstrap';
-import { getNoteById } from '../selectors/noteSelector';
+import { getNoteById } from '../../selectors/noteSelector';
 
 import './ModalDialog.scss';
 

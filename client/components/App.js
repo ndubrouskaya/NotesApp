@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import NotesEditor from './NotesEditor';
-import NotesGrid from './NotesGrid';
+import NotesEditor from './notesEditor/NotesEditor';
+import NotesGrid from './notesGrid/NotesGrid';
 import * as actions from '../actions/notesActions';
 
 import './App.scss';

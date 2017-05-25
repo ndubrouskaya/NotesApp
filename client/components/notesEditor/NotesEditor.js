@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ColorPicker from './ColorPicker';
+import ColorPicker from './../colorPicker/ColorPicker';
 
 import './NotesEditor.scss';
 
