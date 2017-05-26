@@ -59,6 +59,10 @@
   background: #3ac569;
   color: white;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &:hover {
     opacity: .9;
     transition: all 100ms ease;
