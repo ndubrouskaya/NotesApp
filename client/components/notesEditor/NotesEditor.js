@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ColorPicker from './../colorPicker/ColorPicker';
 
@@ -14,7 +15,7 @@ class NotesEditor extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleNoteAdd = this.handleNoteAdd.bind(this);
-        this.handleColorChange =this.handleColorChange.bind(this);
+        this.handleColorChange = this.handleColorChange.bind(this);
     }
 
     handleChange(e) {
@@ -66,11 +67,13 @@ class NotesEditor extends React.Component {
                 <div className="notes-editor__footer">
                     <ColorPicker
                         value={this.state.color}
-                        onChange={this.handleColorChange}/>
+                        onChange={this.handleColorChange}
+                    />
                     <button
                         className="notes-editor__button"
                         disabled={!this.state.text}
-                        onClick={this.handleNoteAdd} >
+                        onClick={this.handleNoteAdd}
+                    >
                         Add
                     </button>
                 </div>
@@ -78,5 +81,9 @@ class NotesEditor extends React.Component {
         );
     }
 }
+
+NotesEditor.propTypes = {
+    onNoteAdd: PropTypes.func
+};
 
 export default NotesEditor;

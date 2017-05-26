@@ -1,11 +1,10 @@
-/*eslint-disable import/default*/ //for configure store
 import React from 'react';
-import configureStore from './store/configureStore';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
+
+import configureStore from './store/configureStore';
 import App from './components/App';
-import {loadNotes} from './actions/notesActions';
-import DevTools from './../client/components/DevTools';
+import DevTools from './components/DevTools';
 
 const store = configureStore();
 
@@ -18,3 +17,4 @@ render(
     </Provider>,
     document.getElementById('app')
 );
+

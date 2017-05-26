@@ -7,37 +7,33 @@ import Note from './../note/Note';
 
 import './NotesGrid.scss';
 
-class NotesGrid extends React.Component {
-    render() {
-        const { notes, onNoteDelete, onNoteEdit } = this.props;
-        const masonryOptions = {
-            columnWidth: 250,
-            itemSelector: '.note',
-            gutter: 10,
-            isFitWidth: true
-        };
-        return (
-            <Masonry className='notes-grid' options={masonryOptions}>
-                {notes.map(note =>
-                    <Note
-                        key={note._id}
-                        note={note}
-                        onDelete={onNoteDelete.bind(null, note)} />)
-                }
-            </Masonry>
-        );
-    }
-}
+const masonryOptions = {
+    columnWidth: 250,
+    itemSelector: '.note',
+    gutter: 10,
+    isFitWidth: true
+};
+/* eslint-disable no-debugger */
+debugger;
+const NotesGrid = ({ notes, onNoteDelete }) => (
+    <Masonry className="notes-grid" options={masonryOptions}>
+        {notes.map(note => (
+            <Note
+                key={note._id}
+                note={note}
+                onDelete={() => onNoteDelete(note)}
+            />
+        ))}
+    </Masonry>
+);
 
 NotesGrid.propTypes = {
-    notes: PropTypes.array,
-    onNoteDelete: PropTypes.func,
+    notes: PropTypes.arrayOf(PropTypes.obj),
+    onNoteDelete: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
-    return {
-        notes: state.notes.notes
-    };
-};
+const mapStateToProps = state => ({
+    notes: state.notesReducer.notes
+});
 
 export default connect(mapStateToProps)(NotesGrid);

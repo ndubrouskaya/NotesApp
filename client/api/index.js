@@ -4,10 +4,10 @@ export default {
     listNotes() {
         return fetch(`${apiPrefix}/notes`,
             {
-                'method': 'GET',
-                'headers': {
-                    'Accept': 'application/json',
-                },
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json'
+                }
             });
     },
 
@@ -15,11 +15,11 @@ export default {
         console.log(data);
         return fetch(`${apiPrefix}/notes`,
             {
-                'method': 'POST',
-                'headers': {
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json'
                 },
-                'body': JSON.stringify(data)
+                body: JSON.stringify(data)
             });
     },
 
@@ -34,11 +34,11 @@ export default {
         return fetch(`${apiPrefix}/notes/${data._id}`,
             {
                 method: 'PUT',
-                'headers': {
+                headers: {
                     'Content-Type': 'application/json'
                 },
-                'body': JSON.stringify(data)
+                body: JSON.stringify(data)
 
             });
     }
-}
+};

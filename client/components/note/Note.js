@@ -31,22 +31,22 @@ class Note extends React.Component {
     }
 
     render() {
-        const {note, onDelete} = this.props;
+        const { note, onDelete } = this.props;
         const style = { backgroundColor: note.color };
         return (
-            <div className='note' style={style}>
-                <span className='note__icon-edit' onClick={() => this.showModal(true)} >
+            <div className="note" style={style}>
+                <button className="note__icon-edit" onClick={() => this.showModal(true)} >
                     <Glyphicon glyph="pencil" />
-                </span>
-                <span className='note__icon-del' onClick={onDelete.bind(this)} >
+                </button>
+                <button className="note__icon-del" onClick={() => onDelete()} >
                     <Glyphicon glyph="remove" />
-                </span>
+                </button>
                 {
                     note.title
-                        ? <h4 className='note__title'>{note.title}</h4>
+                        ? <h4 className="note__title">{note.title}</h4>
                         : null
                 }
-                <div className='note__text'>{note.text}</div>
+                <div className="note__text">{note.text}</div>
 
                 {
                     this.state.showModal &&
@@ -62,21 +62,15 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
-    note: PropTypes.object,
+    note: PropTypes.obj,
     onDelete: PropTypes.func,
     updateNote: PropTypes.func,
     setActiveNote: PropTypes.func
 };
 
-const mapActionsToProps = (dispatch) => {
-    return {
-        updateNote: (data) => {
-            dispatch(actions.updateNote(data))
-        },
-        setActiveNote: (id) => {
-            dispatch(actions.setActiveNote(id))
-        }
-    };
-};
+const mapActionsToProps = dispatch => ({
+    updateNote: data => dispatch(actions.updateNote(data)),
+    setActiveNote: id => dispatch(actions.setActiveNote(id))
+});
 
 export default connect(null, mapActionsToProps)(Note);

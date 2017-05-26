@@ -34,7 +34,8 @@ class App extends React.Component {
                 <h1 className="content__header">NotesApp</h1>
                 <NotesEditor onNoteAdd={this.handleNoteAdd} />
                 <NotesGrid
-                    onNoteDelete={this.handleNoteDelete} />
+                    onNoteDelete={this.handleNoteDelete}
+                />
             </div>
         );
     }
@@ -43,21 +44,13 @@ class App extends React.Component {
 App.propTypes = {
     loadNotes: PropTypes.func,
     createNote: PropTypes.func,
-    deleteNote: PropTypes.func,
+    deleteNote: PropTypes.func
 };
 
-const mapActionsToProps = (dispatch) => {
-    return {
-        loadNotes: () => {
-            dispatch(actions.loadNotes());
-        },
-        createNote: (data) => {
-            dispatch(actions.createNote(data))
-        },
-        deleteNote: (id) => {
-            dispatch(actions.deleteNote(id))
-        }
-    }
-};
+const mapActionsToProps = dispatch => ({
+    loadNotes: () => dispatch(actions.loadNotes()),
+    createNote: data => dispatch(actions.createNote(data)),
+    deleteNote: id => dispatch(actions.deleteNote(id))
+});
 
 export default connect(null, mapActionsToProps)(App);

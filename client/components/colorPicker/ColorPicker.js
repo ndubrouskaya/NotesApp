@@ -5,24 +5,22 @@ import './ColorPicker.scss';
 
 const COLORS = ['#ffcccc', '#e6ffcc', '#ccfff5', '#ffffb3', '#ecc6ec', '#e0e0d1'];
 
-class ColorPicker extends React.Component {
-    render() {
-        return (
-            <div className="color-picker">
-                {
-                    COLORS.map((color, index) =>
-                        <div
-                            key={index}
-                            className={'color-picker__item' + (this.props.value === color ? ' selected' : '')}
-                            style={{backgroundColor: color}}
-                            onClick={this.props.onChange.bind(null, color)}
-                        />
-                    )
-                }
-            </div>
-        );
-    }
-}
+const ColorPicker = ({ value, onChange }) => (
+    <div className="color-picker">
+        {
+            COLORS.map(color => (
+                <div
+                    tabIndex="-1"
+                    role="menuitem"
+                    key={color}
+                    className={value === color ? 'color-picker__item selected' : 'color-picker__item'}
+                    style={{ backgroundColor: color }}
+                    onClick={() => onChange(color)}
+                />
+            ))
+        }
+    </div>
+);
 
 ColorPicker.propTypes = {
     value: PropTypes.string,

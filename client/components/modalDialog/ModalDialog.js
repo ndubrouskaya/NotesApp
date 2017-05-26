@@ -31,22 +31,25 @@ class ModalDialog extends React.Component {
         return (
             <Modal
                 show={this.props.show}
-                onHide={() => this.props.onClose()}>
+                onHide={() => this.props.onClose()}
+            >
                 <Modal.Header>
                     <Modal.Title>
                         <input
                             type="text"
                             name="title"
                             value={this.state.title}
-                            onChange={this.handleChange} />
+                            onChange={this.handleChange}
+                        />
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                        <textarea
-                            name="text"
-                            rows="5"
-                            value={this.state.text}
-                            onChange={this.handleChange} />
+                    <textarea
+                        name="text"
+                        rows="5"
+                        value={this.state.text}
+                        onChange={this.handleChange}
+                    />
                 </Modal.Body>
                 <Modal.Footer>
                     <button
@@ -64,20 +67,17 @@ class ModalDialog extends React.Component {
             </Modal>
         );
     }
-};
+}
 
 ModalDialog.propTypes = {
-    note: PropTypes.object,
+    note: PropTypes.obj,
     show: PropTypes.bool,
     onSave: PropTypes.func,
     onClose: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
-    const note = getNoteById(state.notes.notes, state.notes.activeNoteId);
-    return {
-        note: note
-    }
-};
+const mapStateToProps = state => ({
+    note: getNoteById(state.notesReducer.notes, state.notesReducer.activeNoteId)
+});
 
 export default connect(mapStateToProps)(ModalDialog);
